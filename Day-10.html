@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="paragraph" onmouseover="mouseover()" onmouseout="mouseout()">Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Eum rem, possimus fugiat ullam assumenda
+        laudantium tempore ad soluta debitis repellendus.</p>
+
+    <button onclick="changeText()">Change Text</button>
+    <br><br>
+    <div style="border: 2px solid red; display: inline-block;">
+        <img src="https://images.unsplash.com/photo-1721332155567-55d1b12aa271?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="image" width="300" height="300" ondblclick="changeVisiblity()">
+    </div>
+
+    <input type="text" name="" id="inputText" onkeydown="keyDown(event)">
+    <input type="text" id="inputText1" onkeyup="keyUp(event)">
+    <p id="paragraph1"></p>
+
+
+    <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Enter Full Name" name="fullname" id="fullname">
+        <input type="text" placeholder="Enter City" name="city" id="city">
+        <button type="submit">Submit</button>
+    </form>
+
+    <select onchange="changeDropDown(event)">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+        <option value="four">Four</option>
+        <option value="five">Five</option>
+    </select>
+
+    <p id="paragraph2"></p>
+
+    <ul id="lists">
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+
+    <p id="paragraph3"></p>
+    <div id="division"></div>
+    <button id="handleChange">Add Child</button>
+
+</body>
+<script>
+    // Acitivity 1
+    function changeText() {
+        let text = document.querySelector("#paragraph")
+        text.textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam aut inventore cumque. Officiis commodi vitae quidem iste, repudiandae vel accusantium facilis, nostrum veniam perspiciatis in sunt sequi minima voluptates. Reiciendis sunt dignissimos tenetur vitae soluta consectetur veniam dolorem omnis facere!"
+    }
+    function changeVisiblity() {
+        let image = document.querySelector('img');
+        image.style.visibility = 'hidden'
+    }
+
+    // Activity 2
+
+    function mouseover() {
+        let text = document.querySelector("#paragraph")
+        text.style.background = "red"
+    }
+
+    function mouseout() {
+        let text = document.querySelector("#paragraph")
+        text.style.background = ""
+    }
+
+    // Activity 3
+
+    function keyDown(event) {
+        console.log(event.key)
+    }
+
+    function keyUp(event) {
+        let paragraph1 = document.querySelector("#paragraph1");
+        if (event.key == 'Backspace' || event.key == 'Alt' || event.key == "Shift" || event.key == "Control") {
+            paragraph1.textContent
+        }
+        else {
+            paragraph1.textContent += event.key
+        }
+    }
+
+    // Activity 4
+
+    function submitForm(event) {
+        event.preventDefault()
+        let fullname = document.getElementById("fullname").value
+        let city = document.getElementById("city").value
+
+        console.log(fullname)
+        console.log(city)
+    }
+
+    function changeDropDown(event) {
+        let paragraph2 = document.getElementById("paragraph2")
+        paragraph2.textContent = event.target.value
+    }
+
+    // Activity 5
+
+    let lists = document.getElementById("lists")
+    lists.addEventListener('click', function (event) {
+        let paragraph3 = document.getElementById("paragraph3")
+        paragraph3.textContent = event.target.textContent
+    })
+
+    const division = document.getElementById('division');
+
+
+    const handleChange = document.getElementById('handleChange');
+    handleChange.addEventListener('click', () => {
+        const elem = document.createElement('p');
+        elem.textContent = 'New Child';
+        division.appendChild(elem);
+        division.style.backgroundColor = "blue"
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,118 @@
+<script>
+
+    // Activity 1
+    function intentedError() {
+        throw new Error
+    }
+
+    try {
+        intentedError()
+    }
+    catch (e) {
+        console.log("Something went wrong " + e)
+    }
+    function division(dividend, divisor) {
+        try {
+            if (divisor > 0) {
+                return dividend / divisor
+            }
+            else {
+                throw "You cannot divide the number by zero"
+            }
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+
+    console.log(division(3, 0))
+
+
+    // Activity 2
+    console.log("Program Start")
+    try {
+        throw "Throw Error"
+    }
+    catch (error) {
+        console.error(error)
+    }
+    finally {
+        console.log("Program End")
+    }
+
+    // Activity 3
+    class CustomError extends Error {
+        constructor(message) {
+            super(message);
+            this.name = "CustomError"; // Ensure this matches the class name
+        }
+    }
+
+    try {
+        throw new CustomError("This is a Custom Error");
+    } catch (error) {
+        console.log(error)
+    }
+
+    function emptyString() {
+        try {
+
+            let input = prompt("Enter Your Name: ")
+
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+    emptyString()
+
+    // Activity 4
+
+    new Promise((resolve, reject) => {
+        const args = [resolve, reject]
+        let value = Math.floor(Math.random() * args.length)
+        args[value]()
+    }).then(() => { console.log("Promise Resolved") }).catch(() => { console.log("Promise Rejected") })
+
+    async function handleArgs() {
+        try{
+            await new Promise((resolve, reject) => {
+                const args = [resolve, reject]
+                let value = Math.floor(Math.random() * args.length)
+                if(value == 1){
+                    reject(new Error("Promise Rejected"))
+                }
+                else{
+                    resolve()
+                }
+            })
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+    handleArgs()
+
+    // Activity 5
+
+    fetch("https://fakestoreapi.com/produc").then((response) => {
+        if(response.status == 404){
+            throw new Error("Api source is incorrect.")
+        }
+    }).catch((error) => {
+        console.log(error)
+    })
+
+    async function fetchUrl(){
+        try{
+            let response = await fetch("https://fakestoreapi.com/produc")
+            if(response.status == 404){
+                throw new Error("Invalid Source of API")
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+fetchUrl()
+</script>

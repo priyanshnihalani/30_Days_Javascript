@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sampleClass{
+            padding: 10px;
+            background-color: rgb(100, 100, 209);
+        }
+        .info{
+            padding: 10px;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <p id="paragraph">Hitesh Choudhry</p>
+    <div class="info" onmouseover="changeColor()">
+        <p>Chai aur Code 30 Days Javascript Challange.</p>
+        <p>Today is Day 9.</p>
+    </div>
+    <ul id="lists">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <img src="https://images.unsplash.com/photo-1721475246144-98e4f01f3a6c?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image" width="500" height="300" id="image">
+
+    <p id="chai">Chai aur Code</p>
+    <button onclick="changeText()">Change Text</button>
+</body>
+<script>
+    // Activity 1
+    let paragraph = document.querySelector("#paragraph")
+    paragraph.textContent = "ChaiaurCode"
+
+    let info = document.querySelector(".info")
+    info.style.background = "red"
+
+    // Activity 2
+    let division = document.createElement("div")
+    division.textContent='Hello Hitesh Sir'
+
+    document.body.append(division)
+
+    let lists = document.querySelector("#lists")
+    let listChild = document.createElement("li");
+    listChild.textContent = 4
+
+    lists.appendChild(listChild)
+    
+    // Activity 3
+    division.remove()
+    lists.removeChild(lists.lastChild)
+
+    // Activity 4
+    let img = document.querySelector("#image");
+    let attr = img.setAttribute('src', 'https://plus.unsplash.com/premium_photo-1721269383406-e2a00051595b?q=80&w=2858&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+
+    paragraph.classList.add('sampleClass')
+    paragraph.classList.remove('sampleClass')
+
+    // Activity 5
+    function changeText(){
+        let chai = document.getElementById("chai")
+        chai.textContent = "Hitesh Choudhry"
+    }
+
+    function changeColor(){
+        info.style.borderColor = 'green'
+    }
+</script>
+</html>
